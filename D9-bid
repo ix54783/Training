@@ -1,0 +1,31 @@
+from replit import clear
+#HINT: You can call clear() to clear the output in the console.
+from art import logo
+
+End_bid = False
+
+bid = ["bidder", "price"]
+
+
+def join_bid():
+  bid_name = input(f'Who is joining the bid?\n')
+                   
+  bid_price = input(f'How much are you paying the bid?\n')
+  new_bid = {}
+  new_bid["bidder"] = bid_name
+  new_bid["price"] = bid_price
+
+  bid.append(new_bid)
+  print(bid)
+  keep_bid = input(f'Any one else joining the bid? type "yes" or "no"\n')
+
+  
+  if keep_bid == "yes":
+    clear()
+    join_bid()
+  elif keep_bid == "no":
+    clear()
+    print(f'the winner is {winner}!')
+        
+join_bid()
+#print(bid["price"][0])
