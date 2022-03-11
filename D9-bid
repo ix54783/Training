@@ -1,31 +1,38 @@
 from replit import clear
 #HINT: You can call clear() to clear the output in the console.
 from art import logo
+print(logo)
+#presetting
 
-End_bid = False
+end_bid = False
+bids = {}
 
-bid = ["bidder", "price"]
-
-
-def join_bid():
-  bid_name = input(f'Who is joining the bid?\n')
-                   
-  bid_price = input(f'How much are you paying the bid?\n')
-  new_bid = {}
-  new_bid["bidder"] = bid_name
-  new_bid["price"] = bid_price
-
-  bid.append(new_bid)
-  print(bid)
-  keep_bid = input(f'Any one else joining the bid? type "yes" or "no"\n')
-
+#highest bid 
+#bidding_record = {"Henry":110, "Jack":110}
+def find_highest_bidder(bidding_record):
+  highest_bid = 0 
+  winner = ""
+  for bidder in bidding_record:
+    bid_amount = bidding_record[bidder]
+    
+    if bid_amount > highest_bid:
+      highest_bid = bid_amount
+      winner = bidder  
+    #elif highest_bid == bid_amount:
+      #print("Equal bid")
   
-  if keep_bid == "yes":
+  print(f"the winner is {winner} with the bid of ${bid_amount}")
+    
+
+#bid participation
+while not end_bid:
+  name = input(f'Who is joining the bid?\n')
+  price = int(input(f'How much are you paying the bid?\n'))
+  bids[name] = price
+  keep_bid = input(f'Any one else joining the bid? type "yes" or "no"\n')
+  
+  if keep_bid == "no":
+    end_bid = True
+    find_highest_bidder(bids)
+  elif keep_bid == "yes":
     clear()
-    join_bid()
-  elif keep_bid == "no":
-    clear()
-    print(f'the winner is {winner}!')
-        
-join_bid()
-#print(bid["price"][0])
