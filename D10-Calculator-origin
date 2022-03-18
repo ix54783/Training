@@ -1,0 +1,41 @@
+#Calculator
+from art import logo
+
+print(logo)
+
+#Add
+def add(a1, a2):
+  return a1 + a2
+#Substract
+def substract(a1, a2):
+  return a1 - a2
+#Multiply
+def multiply(a1, a2):
+  return a1 * a2
+#Devide
+def devide(a1, a2):
+  return a1 / a2
+
+operations = {
+  "+": add, 
+  "-": substract, 
+  "*": multiply, 
+  "/": devide
+}
+
+num1 = int(input(f"""What's the first number?: """))
+for symbol in operations:
+  print(symbol)
+
+operation_symbol = input(f"Pick an operation symbol from above: ")
+num2 = int(input(f"""What's the second number?: """))
+calculation_function = operations[operation_symbol]
+first_answer = calculation_function(num1, num2)
+print(f"{num1} {operation_symbol} {num2} = {first_answer}")
+
+
+operation_symbol = input(f"Pick another operation symbol: ")
+num3 = int(input(f"What's the third number?: "))           
+calculation_function = operations[operation_symbol]
+second_answer = calculation_function(first_answer, num3)
+print(f"{first_answer} {operation_symbol} {num3} = {second_answer}")
